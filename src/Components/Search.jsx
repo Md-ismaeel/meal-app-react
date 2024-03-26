@@ -35,8 +35,6 @@ export const Search = () => {
         searchInput();
     }
 
-
-    console.log(searchData);
     return (
         <div className='w-full flex flex-col'>
             <div className='w-full mb-12'>
@@ -59,25 +57,25 @@ export const Search = () => {
                         </div>
                         {showMenu === true ? <div>
 
-                            (<ul className='w-72 absolute top-0 right-0 h-screen z-30 shadow-2xl transition-all ease-in-out duration-500 bg-white text-black flex-0 flex flex-col gap-2 text-lg py-2 px-6 border-bottom'>
+                            (<ul className='w-72 absolute top-0 right-0 h-screen z-30 shadow-2xl transition-all ease-in-out duration-500 bg-white text-black flex-0 flex flex-col gap-2 text-lg border-bottom'>
                                 <button onClick={menuHandler} className='w-full flex justify-end mt-4'>
                                     <svg className='text-orange-500 hover:text-slate-600' stroke="currentColor" fill="currentColor" strokeWidth="0" version="1.1" viewBox="0 0 16 16" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM8 14.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5z"></path><path d="M10.5 4l-2.5 2.5-2.5-2.5-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 2.5-2.5 2.5 2.5 1.5-1.5-2.5-2.5 2.5-2.5z"></path>
                                     </svg>
                                 </button>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Beef`}>Beef</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Chicken`}>Chicken</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Dessert`}>Dessert</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Lamb`}>Lamb</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Miscellaneous`}>Miscellaneous</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Pasta`}>Pasta</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Pork`}>Pork</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Seafood`}>Seafood</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Starter`}>Side</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Starter`}>Starter</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Vegan`}>Vegan</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Vegetarian`}>Vegetarian</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Breakfast`}>Breakfast</NavLink></li>
-                                <li className='w-full border-b'><NavLink to={`/subcategory/Goat`}>Goat</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Beef`}>Beef</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Chicken`}>Chicken</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Dessert`}>Dessert</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Lamb`}>Lamb</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Miscellaneous`}>Miscellaneous</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Pasta`}>Pasta</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Pork`}>Pork</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Seafood`}>Seafood</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Starter`}>Side</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Starter`}>Starter</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Vegan`}>Vegan</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Vegetarian`}>Vegetarian</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Breakfast`}>Breakfast</NavLink></li>
+                                <li className='w-full border-b'><NavLink className='w-full py-2 p-6' to={`/subcategory/Goat`}>Goat</NavLink></li>
                             </ul>)
                         </div>
                             : ''}

@@ -17,18 +17,11 @@ export const ProductDetails = () => {
       );
 
       console.log(response.data.meals[0]);
+      response.data.meals[0] ? setProduct(response.data.meals[0]) : setProduct([]);
 
-      response.data.meals[0]
-        ? setProduct(response.data.meals[0])
-        : setProduct([]);
+      response.data.meals[0].strTags ? setTag(response.data.meals[0].strTags.split(",")) : setTag([]);
 
-      response.data.meals[0].strTags
-        ? setTag(response.data.meals[0].strTags.split(","))
-        : setTag([]);
-
-      response.data.meals[0].strInstructions
-        ? setInstruction(response.data.meals[0].strInstructions.split("."))
-        : setInstruction([]);
+      response.data.meals[0].strInstructions ? setInstruction(response.data.meals[0].strInstructions.split(".")) : setInstruction([]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -42,6 +35,8 @@ export const ProductDetails = () => {
   return (
     <>
       <div className="w-full min-h-screen py-1 px-6 flex flex-col mb-24">
+
+
         <div className="w-full h-12 bg-orange-500 flex text-white justify-start items-center py-1 px-4 gap-4 mb-6">
           <span>
             <NavLink to="/">
@@ -75,10 +70,14 @@ export const ProductDetails = () => {
           <span>{product.strMeal?.toUpperCase()}</span>
         </div>
 
+
+
         <div>
           <h1 className="text-3xl font-semibold mb-2">MEALS DETAILS</h1>
           <p className="bg-orange-500 h-1 w-24"></p>
         </div>
+
+
 
         <div className="w-full bg-white min-h-screen mt-6 drop-shadow-2xl p-8 rounded-md">
           <div className="w-full flex justify-start gap-12">
@@ -105,13 +104,12 @@ export const ProductDetails = () => {
 
               <p className="mt-6 text-lg">
                 {product.strSource && (
+
                   <a href={product.strSource} target="_blank">
                     <span className="font-bold mr-3">Source:</span>
 
                     <span className="hover:text-orange-600">
-                      {product.strSource.length > 40
-                        ? product.strSource.slice(0, 40) + "..."
-                        : product.strSource}
+                      {product.strSource.length > 40 ? product.strSource.slice(0, 40) + "..." : product.strSource}
                     </span>
                   </a>
                 )}
@@ -121,10 +119,7 @@ export const ProductDetails = () => {
                 <span className="font-bold mr-3 ">TAGS:</span>
                 {tag.map((e) => {
                   return (
-                    <span className="h-6 w-12 tex-lg text-orange-700 border mr-3 py-1 px-4 border-orange-300">
-                      {e}
-                    </span>
-                  );
+                    <span className="h-6 w-12 tex-lg text-orange-700 border mr-3 py-1 px-4 border-orange-300">{e}</span>);
                 })}
               </p>
 
@@ -132,23 +127,15 @@ export const ProductDetails = () => {
                 <h3 className="mb-4 text-xl font-semibold">Ingredients</h3>
 
                 <ul className="w-full flex flex-wrap">
-                  {Object.keys(product)
-                    .filter(
-                      (key) =>
-                        key.startsWith("strIngredient") && product[key] !== ""
-                    )
-                    .map((ingredientKey, index) => (
-                      <li
-                        key={ingredientKey}
-                        className="w-1/3 flex justify-start items-center gap-4 mb-4"
-                      >
-                        <span className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-600 ">
-                          {index + 1}
-                        </span>
-
-                        <span>{product[ingredientKey]}</span>
-                      </li>
-                    ))}
+                  {Object.keys(product).filter((key) => key.startsWith("strIngredient") && product[key] !== "").map((ingredientKey, index) => (
+                    <li
+                      key={ingredientKey}
+                      className="w-1/3 flex justify-start items-center gap-4 mb-4"
+                    >
+                      <span className="h-8 w-8 flex justify-center items-center rounded-full bg-slate-600 ">{index + 1}</span>
+                      <span>{product[ingredientKey]}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -158,6 +145,7 @@ export const ProductDetails = () => {
             <h1 className="text-xl mb-2">Measure:</h1>
 
             <ul className="w-full flex flex-wrap border py-4 px-10">
+
               {Array.from({ length: 20 }, (_, index) => {
                 const measure = product[`strMeasure${index + 1}`];
                 // Add a conditional check to filter out invalid measures
@@ -165,22 +153,12 @@ export const ProductDetails = () => {
                   return (
                     <li key={index} className="w-1/2 items-center">
                       <div className="w-full flex justify-center items-center gap-3 mb-4">
-                        <svg
-                          className="scp text-orange-600"
-                          stroke="currentColor"
-                          fill="currentColor"
-                          strokeWidth="0"
-                          viewBox="0 0 512 512"
-                          height="1em"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+
+                        <svg className="scp text-orange-600" stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                           <path d="M480.1 31.9c-55-55.1-164.9-34.5-227.8 28.5-49.3 49.3-55.1 110-28.8 160.4L9 413.2c-11.6 10.5-12.1 28.5-1 39.5L59.3 504c11 11 29.1 10.5 39.5-1.1l192.4-214.4c50.4 26.3 111.1 20.5 160.4-28.8 63-62.9 83.6-172.8 28.5-227.8z"></path>
                         </svg>
 
-                        <p className="w-full text-md font-semibold">
-                          {measure}
-                        </p>
+                        <p className="w-full text-md font-semibold">{measure}</p>
                       </div>
                     </li>
                   );
@@ -195,26 +173,18 @@ export const ProductDetails = () => {
 
             {instruction.map(
               (item, index) =>
-                item !== "" && (
-                  <ul key={index} className="w-full flex flex-col gap-5">
-                    <li className="w-full flex gap-2 justify-start items-center mt-3">
-                      <svg
-                        style={{ color: "#e16120" }}
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth="0"
-                        viewBox="0 0 1024 1024"
-                        className="text-orange li-icon"
-                        height="18"
-                        width="18"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M433.1 657.7a31.8 31.8 0 0 0 51.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path>
-                        <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
-                      </svg>
-                      <span className="text-lg">{item}</span>
-                    </li>
-                  </ul>
+
+                item !== "" && (<ul key={index} className="w-full flex flex-col gap-5">
+                  <li className="w-full flex gap-2 justify-start items-center mt-3">
+
+                    <svg style={{ color: "#e16120" }} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024" className="text-orange li-icon" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M433.1 657.7a31.8 31.8 0 0 0 51.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path>
+                      <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path>
+                    </svg>
+
+                    <span className="text-lg">{item}</span>
+                  </li>
+                </ul>
                 )
             )}
           </div>
