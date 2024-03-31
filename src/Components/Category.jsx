@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 
-export const Category = () => {
+const Category = () => {
   const [categoryData, setCategoryData] = useState([]);
 
   const FetchData = async () => {
@@ -59,3 +59,4 @@ export const Category = () => {
     </div>
   );
 };
+export default Category;

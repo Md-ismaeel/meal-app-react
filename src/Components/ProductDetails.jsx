@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
-import { Category } from "./Category";
+import Category from "./Category";
 
-export const ProductDetails = () => {
+const ProductDetails = () => {
   const params = useParams();
 
   const [product, setProduct] = useState({});
@@ -195,3 +195,5 @@ export const ProductDetails = () => {
     </>
   );
 };
+
+export default ProductDetails;

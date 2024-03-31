@@ -1,9 +1,12 @@
 import './App.css'
-import { Category } from './Components/Category'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Search } from './Components/Search'
-import { SubCategory } from './Components/SubCategory'
-import { ProductDetails } from './Components/ProductDetails'
+import React, { lazy, Suspense } from 'react';
+import LazyLoading from './Components/LazyLoading'
+
+const Category = lazy(() => import('./Components/Category'))
+const SubCategory = lazy(() => import("./Components/SubCategory"))
+const ProductDetails = lazy(() => import('./Components/ProductDetails'))
 
 
 function App() {
@@ -11,12 +14,16 @@ function App() {
   return (
     <BrowserRouter>
       <Search />
-      <Routes>
+
+      <Suspense fallback={<LazyLoading />}>
       
-        <Route path='/' element={<Category />} />
-        <Route path='/subcategory/:subcategoryName' element={<SubCategory />} />
-        <Route path='/product/:productId' element={<ProductDetails />} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<Category />} />
+          <Route path='/subcategory/:subcategoryName' element={<SubCategory />} />
+          <Route path='/product/:productId' element={<ProductDetails />} />
+        </Routes>
+
+      </Suspense>
     </BrowserRouter>
   )
 }

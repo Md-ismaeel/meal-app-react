@@ -3,11 +3,6 @@ import { userContext } from "./UserContext";
 
 export const ContextProvider = (props) => { // or {children} this both will work
     const [user, setUser] = useState([
-        { name: 'ismail' },
-        { name: 'islam' },
-        { name: 'Allah' },
-        { name: 'God' },
-        { name: 'khalid' }
     ])
     return (
         <>

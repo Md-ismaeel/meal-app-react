@@ -2,15 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 
-export const SubCategory = () => {
-
+const SubCategory = () => {
 
     const params = useParams()
-
     const [subcategory, setSubCategory] = useState([]);
 
     const FetchData = async () => {
-
         try {
             const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.subcategoryName}`);
             // console.log(response.data.meals);
@@ -27,7 +24,6 @@ export const SubCategory = () => {
 
     return (
         <div className='w-full p-6'>
-
             <div className='mb-10'>
                 <h1 className='text-3xl mb-2 font-semibold'>MEALS</h1>
                 <p className='bg-orange-500 h-1 w-14 rounded-md'></p>
@@ -53,3 +49,5 @@ export const SubCategory = () => {
         </div>
     )
 }
+
+export default SubCategory;
